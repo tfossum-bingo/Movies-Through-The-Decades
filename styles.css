@@ -2,7 +2,18 @@ body {
     color: blue
 }
 
-.primary_movie {
+.candidate-image {
+    border: black solid 3px;
+    border-radius: 5px;
+    width: 10%;
+}
+
+.candidate-movie {
+    background-color: cornflowerblue;
+    color: white;
+}
+
+.primary-movie {
     color: white;
     background-color: blueviolet;
 }

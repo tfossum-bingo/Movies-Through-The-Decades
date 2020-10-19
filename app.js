@@ -11,6 +11,14 @@ const BASE_URL = `${DOMAIN}?apikey=${API_KEY}&s=`;
 console.log('BASE_URL: ', BASE_URL)
 
 
+const addOlderMovies = (older_movies) => {
+    older_movies.forEach(movie => {
+        console.log('Current Movie: ', movie['Title'])
+        const current_movie = new CandidateMovie(movie)
+        myDocument.appendChild(current_movie.tile(document))
+    })
+}
+
 const createPrimaryMovieTile = (movie) => {
     const new_div = newDiv()
     new_div.className = 'primary_movie'
@@ -65,6 +73,7 @@ const getMovies = async (titleSearch) => {
 const findOlderMovies = (sorted_movies, years_ago) => {
     const olderMovies = sorted_movies.filter(movie => movie['Year'] < primaryMovie['Year'] - years_ago)
     console.log('Older Movies', olderMovies)
+    return olderMovies
 }
 
 const findPrimaryMovie = (sorted_movies) => {
@@ -81,8 +90,8 @@ const newDiv = () => {
 const processList = (movie_list) => {
     const sortedList = sortMovies(movie_list)
     findPrimaryMovie(sortedList)
-    findOlderMovies(sortedList, 10)
     myDocument.appendChild(createPrimaryMovieTile(primaryMovie))
+    addOlderMovies(findOlderMovies(sortedList, 10))
 }
 
 const sortMovies = (movie_list) => {
