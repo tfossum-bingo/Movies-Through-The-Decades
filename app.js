@@ -22,13 +22,9 @@ const addOlderMovies = (older_movies) => {
 }
 
 const createPrimaryMovieTile = (movie) => {
-    const new_div = newDiv()
-    new_div.classList = 'primary-movie movie'
-    new_div.appendChild(createMainImage(movie))
-    new_div.appendChild(createH2Title(movie))
-    new_div.appendChild(createULDetails(movie))
-
-    return new_div
+    const primary_movie_div = new PrimaryMovie(movie).tile(document)
+    console.log('Prim Div: ', primary_movie_div)
+    return primary_movie_div
 }
 
 const createH2Title = (movie) => {
@@ -121,7 +117,6 @@ const sortMovies = (movie_list) => {
 
 // console.log(getMovies('fast'))
 console.log('myList: ', myList)
-
 
 searchButton.addEventListener('click', function(event){
     performSearch(event)
