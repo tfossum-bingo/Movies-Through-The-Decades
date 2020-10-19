@@ -72,7 +72,7 @@ class PrimaryMovie extends Movie {
     }
 
     titleTag(document) {
-        const new_title = document.createElement('h1')
+        const new_title = document.createElement('h2')
         new_title.innerText = this.title()
         return new_title
     }

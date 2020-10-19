@@ -2,6 +2,10 @@ body {
     color: blue
 }
 
+h1 {
+    color: rgb(68, 67, 67);
+}
+
 .candidate-image {
     border: black solid 3px;
     border-radius: 5px;
