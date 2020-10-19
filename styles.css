@@ -3,5 +3,12 @@ body {
 }
 
 .primary_movie {
+    color: white;
     background-color: blueviolet;
+}
+
+.main-image {
+    border: black solid 3px;
+    border-radius: 5px;
+    width: 25%;
 }

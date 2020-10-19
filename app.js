@@ -14,6 +14,7 @@ console.log('BASE_URL: ', BASE_URL)
 const createPrimaryMovieTile = (movie) => {
     const new_div = newDiv()
     new_div.className = 'primary_movie'
+    new_div.appendChild(createMainImage(movie))
     new_div.appendChild(createH2Title(movie))
     new_div.appendChild(createULDetails(movie))
     console.log(new_div)
@@ -41,6 +42,14 @@ const createULDetails = (movie) => {
     return new_ul
 }
 
+const createMainImage = (movie) => {
+    const new_img = document.createElement('img')
+    new_img.src = movie['Poster']
+    new_img.img_alt = `Movie Poster ${movie['Title']}`
+    new_img.className = 'main-image'
+    console.log('Main Image: ', new_img)
+    return new_img
+}
 
 const getMovies = async (titleSearch) => {
     try{
