@@ -32,8 +32,10 @@ const createULDetails = (movie) => {
     const desired_keys = ['Year']
     desired_keys.forEach(element => {
         const new_li = document.createElement('li')
+        console.log('Current Key: ', element, movie[element])
         new_li.innerHTML = movie[element]
-        new_ul.appendChild.new_li
+        console.log('li: ', new_li)
+        new_ul.appendChild(new_li)
     })
     console.log('New_UL: ', new_ul)
     return new_ul
