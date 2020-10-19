@@ -1,7 +1,8 @@
+//Will want to make a parent class from which the primary and candidate movies extend.
+
 class CandidateMovie {
     constructor(movie) {
         this.movie = movie
-        console.log('This Movie: ', this.movie)
     }
 
     poster_url(){
@@ -10,7 +11,7 @@ class CandidateMovie {
 
     tile(document){
         const new_div = document.createElement('div')
-        new_div.className = 'candidate-movie'
+        new_div.classList = 'candidate-movie movie'
         new_div.appendChild(this.posterImageTag(document))
         new_div.appendChild(this.titleTag(document))
         new_div.appendChild(this.yearTag(document))

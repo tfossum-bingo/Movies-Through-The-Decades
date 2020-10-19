@@ -8,6 +8,10 @@ body {
     width: 10%;
 }
 
+.movie {
+    color: black;
+}
+
 .candidate-movie {
     background-color: cornflowerblue;
     color: white;
@@ -15,7 +19,7 @@ body {
 
 .primary-movie {
     color: white;
-    background-color: blueviolet;
+    background-color: gray;
 }
 
 .main-image {

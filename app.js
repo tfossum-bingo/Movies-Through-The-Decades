@@ -4,6 +4,8 @@ let myList = {}
 let primaryMovie
 let candidateMovies
 let myDocument = document.querySelector('body')
+const searchButton = document.getElementById('search-button')
+const titleField = document.getElementById('title-search')
 
 const DOMAIN = 'http://www.omdbapi.com/';
 const API_KEY = '3279c95f'
@@ -21,11 +23,11 @@ const addOlderMovies = (older_movies) => {
 
 const createPrimaryMovieTile = (movie) => {
     const new_div = newDiv()
-    new_div.className = 'primary_movie'
+    new_div.classList = 'primary-movie movie'
     new_div.appendChild(createMainImage(movie))
     new_div.appendChild(createH2Title(movie))
     new_div.appendChild(createULDetails(movie))
-    console.log(new_div)
+
     return new_div
 }
 
@@ -87,11 +89,26 @@ const newDiv = () => {
     return document.createElement('div')
 }
 
+const performSearch = (event) => {
+    resetPage()
+    event.preventDefault()
+    const searchValue = titleField.value
+    getMovies(searchValue)
+} 
+
 const processList = (movie_list) => {
     const sortedList = sortMovies(movie_list)
     findPrimaryMovie(sortedList)
     myDocument.appendChild(createPrimaryMovieTile(primaryMovie))
-    addOlderMovies(findOlderMovies(sortedList, 10))
+    addOlderMovies(sortMovies(findOlderMovies(sortedList, 10)))
+}
+
+const resetPage = () => {
+    const movie_divs = document.getElementsByClassName('movie')
+    while(movie_divs.length > 0){
+        movie_divs[0].remove()
+    }
+    return true
 }
 
 const sortMovies = (movie_list) => {
@@ -102,6 +119,24 @@ const sortMovies = (movie_list) => {
     return movie_list
 }
 
-console.log(getMovies('fast'))
+// console.log(getMovies('fast'))
 console.log('myList: ', myList)
+
+
+searchButton.addEventListener('click', function(event){
+    performSearch(event)
+})
+
+titleField.addEventListener('click', function(event){
+    resetPage()
+    titleField.value = null
+})
+
+titleField.addEventListener('keyup', function(event){
+    if(event.keyCode === 13){
+        event.preventDefault()
+        searchButton.click()
+    }
+})
+
 
