@@ -1,5 +1,9 @@
+* {
+    margin: 0;
+}
 body {
-    color: blue
+    color: blue;
+    font-family: Arial, Helvetica, sans-serif; 
 }
 
 h1 {
@@ -16,6 +20,7 @@ h1 {
 .header-title {
     background-color: hotpink;
     grid-area: 1 1;
+    padding: 5px;
 }
 
 .header-author {
@@ -23,6 +28,7 @@ h1 {
     background-color: indigo;
     grid-area: 1 2;
     text-align: right;
+    padding: 5px 8px 5px 0px;
 }
 
 .search-container {
