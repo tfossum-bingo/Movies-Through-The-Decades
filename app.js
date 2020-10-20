@@ -12,15 +12,6 @@ const API_KEY = '3279c95f'
 const BASE_URL = `${DOMAIN}?apikey=${API_KEY}&s=`;
 console.log('BASE_URL: ', BASE_URL)
 
-const addCompareClickListeners = (candidate_movie_div) => {
-    candidate_movie_div.addEventListener('click', function(event){
-        const parent_imdbID = event.target.id
-        // console.log('movie_id', event.target.id)
-        addCompareMovie(parent_imdbID)
-    })
-    addCompareChildClickListeners(candidate_movie_div)
-}
-
 const addCompareChildClickListeners = (candidate_movie_div) => {
     // console.log('candidate_movie_div: ', candidate_movie_div)
 
@@ -31,6 +22,23 @@ const addCompareChildClickListeners = (candidate_movie_div) => {
             console.log(`Child-${i}:`, parent_imdbID)
             addCompareMovie(parent_imdbID)
         })
+    }
+}
+
+const addCompareClickListeners = (candidate_movie_div) => {
+    candidate_movie_div.addEventListener('click', function(event){
+        const parent_imdbID = event.target.id
+        // console.log('movie_id', event.target.id)
+        addCompareMovie(parent_imdbID)
+    })
+    addCompareChildClickListeners(candidate_movie_div)
+}
+
+const addCompareMovie = (imdbID) => {
+    const compare_movie = candidateMovies.find(movie => movie['imdbID'] == imdbID)
+    // console.log('Found Movie', compare_movie)
+    if(compare_movie != null){
+        addPrimaryMovieTile(compare_movie)
     }
 }
 
@@ -45,14 +53,6 @@ const addCandidateMovies = (older_movies) => {
         older_movie_div.appendChild(current_movie_div)
     })
     myDocument.appendChild(older_movie_div)
-}
-
-const addCompareMovie = (imdbID) => {
-    const compare_movie = candidateMovies.find(movie => movie['imdbID'] == imdbID)
-    // console.log('Found Movie', compare_movie)
-    if(compare_movie != null){
-        addPrimaryMovieTile(compare_movie)
-    }
 }
 
 const addPrimaryMovieTile = (movie) => {

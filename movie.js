@@ -78,7 +78,8 @@ class CandidateMovie extends Movie {
     }
 
     assignDivClassList(div) {
-        div.className = 'candidate-movie movie'
+        super.assignDivClassList(div)
+        div.classList.add('candidate-movie')
     }
 
     assignTitleClassList(p) {
@@ -93,7 +94,8 @@ class PrimaryMovie extends Movie {
     }
 
     assignDivClassList(div) {
-        div.className = 'primary-movie movie'
+        super.assignDivClassList(div)
+        div.classList.add('primary-movie')
     }
 
     assignImageClassList(img) {
