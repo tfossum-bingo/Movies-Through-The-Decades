@@ -14,17 +14,24 @@ console.log('BASE_URL: ', BASE_URL)
 
 
 const addOlderMovies = (older_movies) => {
+    const older_movie_div = newDiv()
+    older_movie_div.classList = 'candidate-movie-container'
     older_movies.forEach(movie => {
         console.log('Current Movie: ', movie['Title'])
         const current_movie = new CandidateMovie(movie)
-        myDocument.appendChild(current_movie.tile(document))
+        older_movie_div.appendChild(current_movie.tile(document))
     })
+    myDocument.appendChild(older_movie_div)
 }
 
-const createPrimaryMovieTile = (movie) => {
+const addPrimaryMovieTile = (movie) => {
+    const primary_movie_container = newDiv()
+    primary_movie_container.classList = 'primary-movie-container'
     const primary_movie_div = new PrimaryMovie(movie).tile(document)
-    console.log('Prim Div: ', primary_movie_div)
-    return primary_movie_div
+    primary_movie_container.appendChild(primary_movie_div)
+    myDocument.appendChild(primary_movie_container)
+
+    return true
 }
 
 const getMovies = async (titleSearch) => {
@@ -65,7 +72,7 @@ const performSearch = (event) => {
 const processList = (movie_list) => {
     const sortedList = sortMovies(movie_list)
     findPrimaryMovie(sortedList)
-    myDocument.appendChild(createPrimaryMovieTile(primaryMovie))
+    addPrimaryMovieTile(primaryMovie)
     addOlderMovies(sortMovies(findOlderMovies(sortedList, 10)))
 }
 

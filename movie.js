@@ -13,20 +13,35 @@ class Movie {
         img.classList = 'candidate-image'
     }
 
+    assignTitleClassList(p) {
+        this.assignSmallerTitle(p)
+    }
+
+    assignSmallerTitle(p) {
+        if(this.title.length > 30){
+            p.classList.add('small-title')
+        }
+    }
+
+    get imdbID(){
+        return this.movie['imdbID']
+    }
+
     posterImageTag(document){
         const new_img = document.createElement('img')
-        new_img.src = this.poster_url()
-        new_img.img_alt = `Movie Poster ${this.title()}`
+        new_img.src = this.poster_url
+        new_img.img_alt = `Movie Poster ${this.title}`
         this.assignImageClassList(new_img)
         return new_img
     }
 
-    poster_url(){
+    get poster_url(){
         return this.movie['Poster']
     }
 
     tile(document){
         const new_div = document.createElement('div')
+        new_div.id = this.movie['imdbID']
         this.assignDivClassList(new_div)
         new_div.appendChild(this.posterImageTag(document))
         new_div.appendChild(this.titleTag(document))
@@ -34,23 +49,24 @@ class Movie {
         return new_div
     }
 
-    title(){
+    get title(){
         return this.movie['Title']
     }
 
     titleTag(document) {
         const new_title = document.createElement('p')
-        new_title.innerText = this.title()
+        new_title.innerText = this.title
+        this.assignTitleClassList(new_title)
         return new_title
     }
 
-    year(){
+    get year(){
         return this.movie['Year']
     }
 
     yearTag(document){
         const new_year = document.createElement('p')
-        new_year.innerText = this.year()
+        new_year.innerText = this.year
         return new_year
     }
 
@@ -63,6 +79,11 @@ class CandidateMovie extends Movie {
 
     assignDivClassList(div) {
         div.className = 'candidate-movie movie'
+    }
+
+    assignTitleClassList(p) {
+        p.classList.add('candidate-movie-title')
+        super.assignTitleClassList(p)
     }
 }
 
@@ -78,9 +99,10 @@ class PrimaryMovie extends Movie {
     assignImageClassList(img) {
         img.classList = 'primary-image'
     }
-    titleTag(document) {
-        const new_title = document.createElement('h2')
-        new_title.innerText = this.title()
-        return new_title
+    
+    assignTitleClassList(p) {
+        p.classList.add('primary-movie-title')
+        super.assignTitleClassList(p)
     }
+
 }
