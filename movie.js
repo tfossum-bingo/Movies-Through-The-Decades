@@ -9,11 +9,15 @@ class Movie {
         div.classList = 'movie'
     }
 
+    assignImageClassList(img) {
+        img.classList = 'candidate-image'
+    }
+
     posterImageTag(document){
         const new_img = document.createElement('img')
         new_img.src = this.poster_url()
         new_img.img_alt = `Movie Poster ${this.title()}`
-        new_img.className = 'candidate-image'
+        this.assignImageClassList(new_img)
         return new_img
     }
 
@@ -71,6 +75,9 @@ class PrimaryMovie extends Movie {
         div.className = 'primary-movie movie'
     }
 
+    assignImageClassList(img) {
+        img.classList = 'primary-image'
+    }
     titleTag(document) {
         const new_title = document.createElement('h2')
         new_title.innerText = this.title()

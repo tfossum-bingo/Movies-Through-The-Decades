@@ -27,36 +27,6 @@ const createPrimaryMovieTile = (movie) => {
     return primary_movie_div
 }
 
-const createH2Title = (movie) => {
-    const new_h2 = document.createElement('h2')
-    new_h2.innerText = movie['Title']
-    console.log('H2 Title: ', new_h2)
-    return new_h2
-}
-
-const createULDetails = (movie) => {
-    const new_ul = document.createElement('ul')
-    const desired_keys = ['Year']
-    desired_keys.forEach(element => {
-        const new_li = document.createElement('li')
-        console.log('Current Key: ', element, movie[element])
-        new_li.innerHTML = movie[element]
-        console.log('li: ', new_li)
-        new_ul.appendChild(new_li)
-    })
-    console.log('New_UL: ', new_ul)
-    return new_ul
-}
-
-const createMainImage = (movie) => {
-    const new_img = document.createElement('img')
-    new_img.src = movie['Poster']
-    new_img.img_alt = `Movie Poster ${movie['Title']}`
-    new_img.className = 'main-image'
-    console.log('Main Image: ', new_img)
-    return new_img
-}
-
 const getMovies = async (titleSearch) => {
     try{
         const response = await axios.get(`${BASE_URL}${titleSearch}`)
@@ -114,9 +84,6 @@ const sortMovies = (movie_list) => {
     console.log(movie_list)
     return movie_list
 }
-
-// console.log(getMovies('fast'))
-console.log('myList: ', myList)
 
 searchButton.addEventListener('click', function(event){
     performSearch(event)
