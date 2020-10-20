@@ -2,6 +2,10 @@ body {
     color: blue
 }
 
+h1 {
+    text-align: center;
+}
+
 .header-container {
     display: grid;
     grid-template-rows: 30px;
@@ -21,30 +25,55 @@ body {
     text-align: right;
 }
 
-h1 {
+.search-container {
+    display: grid;
+    grid-template-rows: 2;
+    grid-template-columns: 1;
+    background-color: rgb(68, 67, 67);
+    color: white;
+    padding: .5em;
+}
+
+.search-instructions {
+    grid-area: 1 1;
+}
+
+.search-entry {
+    grid-area: 2 1;
     text-align: center;
-    color: rgb(68, 67, 67);
 }
 
 .candidate-image {
     border: black solid 3px;
     border-radius: 5px;
-    width: 10%;
+    width: 90%;
 }
 
 .movie {
     color: black;
+    padding: .5em;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .candidate-movie {
+    display: inline-block;
     background-color: cornflowerblue;
     color: white;
+    margin: 1em;
+    width: 200px;
 }
 
+.candidate-movie:hover {
+    /*background-color: rgba(100, 149, 237, .5)8*/
+}
+
+
 .primary-movie {
+    padding: 1em;
+    text-align: center;
     color: white;
     background-color: gray;
-    text-align: center;
 }
 
 .main-image {
