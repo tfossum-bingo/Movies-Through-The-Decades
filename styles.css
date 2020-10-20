@@ -65,6 +65,7 @@ h1 {
     padding: .5em;
     border-radius: 5px;
     text-align: center;
+    cursor: pointer;
 }
 
 .candidate-movie {
