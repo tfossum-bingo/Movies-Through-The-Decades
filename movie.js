@@ -13,15 +13,20 @@ class Movie {
         img.classList = 'candidate-image'
     }
 
-    assignTitleClassList(p) {
-        this.assignSmallerTitle(p)
-    }
-
     assignSmallerTitle(p) {
         if(this.title.length > 30){
             p.classList.add('small-title')
         }
     }
+
+    assignTitleClassList(p) {
+        this.assignSmallerTitle(p)
+    }
+
+    assignYearClassList(p) {
+        p.classList = 'movie-year'
+    }
+
 
     get imdbID(){
         return this.movie['imdbID']
@@ -66,6 +71,7 @@ class Movie {
 
     yearTag(document){
         const new_year = document.createElement('p')
+        this.assignYearClassList(new_year)
         new_year.innerText = this.year
         return new_year
     }
