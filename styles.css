@@ -95,6 +95,8 @@ a {
     grid-column-end: 2;
     grid-row-start: 3;
     grid-row-end: 4;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 .candidate-image {
