@@ -1,34 +1,56 @@
 * {
     margin: 0;
+    text-align: center;
 }
 body {
     color: blue;
-    font-family: Arial, Helvetica, sans-serif; 
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
     text-align: center;
+    color: white;
+}
+
+a {
+    color: white;
+}
+
+.welcome-page {
+    background-color: rgb(68, 67, 67);
+}
+
+.search-body {
+    background-color: lightgrey;
 }
 
 .header-container {
     display: grid;
     grid-template-rows: 30px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 300px auto 175px;
     color: white;
+    background-color: rgb(68, 67, 67);
 }
 
 .header-title {
-    background-color: hotpink;
-    grid-area: 1 1;
+    background-color: rgb(255, 105, 180, 0);
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
     padding: 5px;
 }
 
 .header-author {
     width: 100%;
-    background-color: indigo;
-    grid-area: 1 2;
+    background-color: rgb(75, 0, 130, 0);
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
     text-align: right;
-    padding: 5px 8px 5px 0px;
+    text-align: center;
+    padding: 5px 0;
 }
 
 .search-container {
@@ -40,7 +62,17 @@ h1 {
     padding: .5em;
 }
 
+.search-container {
+    text-align: center;
+    font-size: 1.5em;
+}
+
 .search-instructions {
+    font-size: .7em;
+    margin: 10px;
+}
+
+.search-instructions-container {
     grid-area: 1 1;
 }
 
@@ -125,4 +157,29 @@ h1 {
     border: black solid 3px;
     border-radius: 5px;
     width: 25%;
+}
+
+#search-button {
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 1em;
+}
+
+#search-button:hover {
+    background-color: lightblue;
+}
+
+#title-search {
+    font-size: 1em;
+    width: 300px;
+    padding: 3px;
+    background-color: white;
+    border: lightblue solid 2px;
+    border-radius: 5px;
+}
+
+
+textarea:focus, input:focus{
+    outline: none;
 }

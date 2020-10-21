@@ -8,22 +8,22 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./movie.js"></script>
 </head>
-<body>
+<body class="search-body">
     <div class="header-container">
         <div class="header-title">
-            Welcome to Movies Through the Decades
+            Movies Through the Decades Search
         </div>
         <div class="header-author">
             by: Ted Fossum
         </div>
     </div>
     <div class="search-container">
-        <div class="search-instructions">
-            <h1>Search by title and we'll find similar movies that are at least 10 years older than the title you picked:</h1>
-        </div>
         <div class="search-entry">
             <input type="text" id="title-search" placeholder="Enter a partial movie title"/>
             <button id="search-button">Search</button>
+        </div>
+        <div class="search-instructions-container">
+            <p class="search-instructions">Search by title and we'll find similar movies that are at least 10 years older than the title you picked:</h1>
         </div>
     </div>
     <script defer src="app.js" charset="utf-8"></script>

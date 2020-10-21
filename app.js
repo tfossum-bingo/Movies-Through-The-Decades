@@ -28,7 +28,6 @@ const addCompareChildClickListeners = (candidate_movie_div) => {
 const addCompareClickListeners = (candidate_movie_div) => {
     candidate_movie_div.addEventListener('click', function(event){
         const parent_imdbID = event.target.id
-        // console.log('movie_id', event.target.id)
         addCompareMovie(parent_imdbID)
     })
     addCompareChildClickListeners(candidate_movie_div)
@@ -36,7 +35,6 @@ const addCompareClickListeners = (candidate_movie_div) => {
 
 const addCompareMovie = (imdbID) => {
     const compare_movie = candidateMovies.find(movie => movie['imdbID'] == imdbID)
-    // console.log('Found Movie', compare_movie)
     if(compare_movie != null){
         addPrimaryMovieTile(compare_movie)
     }
@@ -46,7 +44,6 @@ const addCandidateMovies = (older_movies) => {
     const older_movie_div = newDiv()
     older_movie_div.classList = 'candidate-movie-container'
     older_movies.forEach(movie => {
-        // console.log('Current Movie: ', movie['Title'])
         const current_movie = new CandidateMovie(movie)
         const current_movie_div = current_movie.tile(document)
         addCompareClickListeners(current_movie_div)
@@ -68,7 +65,6 @@ const addPrimaryMovieTile = (movie) => {
 
 const findOlderMovies = (sorted_movies, years_ago) => {
     const olderMovies = sorted_movies.filter(movie => movie['Year'] < primaryMovie['Year'] - years_ago)
-    console.log('Older Movies', olderMovies)
     candidateMovies = sortMovies(olderMovies)
 
     return candidateMovies
@@ -77,7 +73,6 @@ const findOlderMovies = (sorted_movies, years_ago) => {
 const findPrimaryMovie = (sorted_movies) => {
     if(sorted_movies.length > 0){
         primaryMovie = sorted_movies.shift()
-        console.log('Primary Movie: ', primaryMovie)
     }
 }
 
@@ -94,7 +89,6 @@ const performSearch = (event) => {
 
 const primaryMovieContainer = () => {
     const primary_container = document.querySelector('.primary-movie-container')
-    console.log('Primary Container: ', primary_container)
     if(primary_container === null) {
         const primary_movie_container = newDiv()
         primary_movie_container.classList = 'primary-movie-container'
@@ -122,12 +116,8 @@ const resetPage = () => {
 
 const removePriorCompare = () => {
     const existing_comparisons = document.querySelector('.primary-movie-container')
-    if(existing_comparisons != null){
-        console.log('Existing Compare Length: ', existing_comparisons.childElementCount)
-    }
 
     if(existing_comparisons != null && existing_comparisons.childElementCount > 1){
-        console.log('Last Child: ', existing_comparisons.lastChild)
         existing_comparisons.removeChild(existing_comparisons.lastChild)
     }
 
@@ -148,7 +138,7 @@ const sortMovies = (movie_list) => {
     movie_list.sort(function(a,b){
         return b['Year'] - a['Year']
     })
-    console.log(movie_list)
+    // console.log(movie_list)
     return movie_list
 }
 
