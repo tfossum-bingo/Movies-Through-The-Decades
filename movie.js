@@ -3,6 +3,10 @@
 class Movie {
     constructor(movie) {
         this.movie = movie
+        this.verbose_description = ''
+    }
+
+    assignDetailsClassList(new_p) {
     }
 
     assignDivClassList(div) {
@@ -27,9 +31,24 @@ class Movie {
         p.classList = 'movie-year'
     }
 
-
+    detailsTag(document) {
+        const new_p = document.createElement('p')
+        console.log('details', this.verbose_description)
+        new_p.innerText = this.movieDetails['Plot']
+        this.assignDetailsClassList(new_p)
+        return new_p
+    }
+ 
     get imdbID(){
         return this.movie['imdbID']
+    }
+
+    set movieDetails(movie_details) {
+        this.verbose_description = movie_details
+    }
+
+    get movieDetails() {
+        return this.verbose_description
     }
 
     posterImageTag(document){
@@ -51,6 +70,7 @@ class Movie {
         new_div.appendChild(this.posterImageTag(document))
         new_div.appendChild(this.titleTag(document))
         new_div.appendChild(this.yearTag(document))
+        new_div.appendChild(this.detailsTag(document))
         return new_div
     }
 
@@ -76,6 +96,7 @@ class Movie {
         return new_year
     }
 
+
 }
 
 class CandidateMovie extends Movie {
@@ -97,6 +118,10 @@ class CandidateMovie extends Movie {
 class PrimaryMovie extends Movie {
     constructor(movie){
         super(movie)
+    }
+
+    assignDetailsClassList(new_p) {
+        new_p.classList = 'movie_details'
     }
 
     assignDivClassList(div) {

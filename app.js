@@ -9,7 +9,9 @@ const titleField = document.getElementById('title-search')
 
 const DOMAIN = 'http://www.omdbapi.com/';
 const API_KEY = '3279c95f'
-const BASE_URL = `${DOMAIN}?apikey=${API_KEY}&s=`;
+const BASE_URL = `${DOMAIN}?apikey=${API_KEY}&s=`
+const DETAIL_SEARCH_URL = `http://www.omdbapi.com/?apikey=${API_KEY}&i=`
+
 console.log('BASE_URL: ', BASE_URL)
 
 const addCompareChildClickListeners = (candidate_movie_div) => {
@@ -56,11 +58,29 @@ const addPrimaryMovieTile = (movie) => {
     if(document.querySelector('.primary-movie-container') !== null){
         removePriorCompare()
     }
-    const primary_movie_div = new PrimaryMovie(movie).tile(document)
     const primary_movie_container = primaryMovieContainer()
-    primary_movie_container.appendChild(primary_movie_div)
-
+    const primary_movie = new PrimaryMovie(movie)
+    fetchMovieDetails(primary_movie)
+    //Really don't like this and would rather wait specifically for the reply.
+    setTimeout(function(){
+        console.log('Waited for details')
+        console.log('Done waiting')
+        const primary_movie_div = primary_movie.tile(document)
+        primary_movie_container.appendChild(primary_movie_div)
+    }, 250)
+    
     return true
+}
+
+const fetchMovieDetails = async (movie) => {
+    try{
+        const response = await axios.get(`${DETAIL_SEARCH_URL}${movie.imdbID}`)
+        console.log(response.data)
+        movie.verbose_description = response.data
+        console.log('verbose: ', movie.verbose_description)
+    }catch(error){
+        console.log(error)
+    }
 }
 
 const findOlderMovies = (sorted_movies, years_ago) => {

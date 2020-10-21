@@ -90,6 +90,13 @@ a {
     cursor: pointer;
 }
 
+.movie_details {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 4;
+    grid-row-end: 5; 
+}
+
 .movie-year {
     grid-column-start: 1;
     grid-column-end: 2;
