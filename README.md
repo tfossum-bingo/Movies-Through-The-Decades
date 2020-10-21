@@ -112,4 +112,4 @@ This project is being managed via a Trello board
 https://trello.com/b/71URbltV/movies-through-the-decades
 
 ## Low Fidelity Wireframe
-https://ted-fossum-personal.s3.amazonaws.com/general-assembly/mttd_wireframe.png
+![Low Fidelity Wireframe](https://ted-fossum-personal.s3.amazonaws.com/general-assembly/mttd_wireframe.png)
