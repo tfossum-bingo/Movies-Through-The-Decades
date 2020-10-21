@@ -34,7 +34,7 @@ class Movie {
     detailsTag(document) {
         const new_p = document.createElement('p')
         console.log('details', this.verbose_description)
-        new_p.innerText = this.movieDetails['Plot']
+        new_p.innerText = `${this.movieDetails['Plot']} Rated: ${this.movieDetails['Rated']} Runtime: ${this.movieDetails['Runtime']}`
         this.assignDetailsClassList(new_p)
         return new_p
     }
@@ -70,7 +70,9 @@ class Movie {
         new_div.appendChild(this.posterImageTag(document))
         new_div.appendChild(this.titleTag(document))
         new_div.appendChild(this.yearTag(document))
-        new_div.appendChild(this.detailsTag(document))
+        if(this.movieDetails != ''){
+            new_div.appendChild(this.detailsTag(document))
+        }
         return new_div
     }
 
@@ -121,7 +123,7 @@ class PrimaryMovie extends Movie {
     }
 
     assignDetailsClassList(new_p) {
-        new_p.classList = 'movie_details'
+        new_p.classList = 'primary-description'
     }
 
     assignDivClassList(div) {

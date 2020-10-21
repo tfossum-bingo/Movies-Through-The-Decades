@@ -120,16 +120,24 @@ const primaryMovieContainer = () => {
 }
 
 const processList = (movie_list) => {
-    const sortedList = sortMovies(movie_list)
-    findPrimaryMovie(sortedList)
-    addPrimaryMovieTile(primaryMovie)
-    addCandidateMovies(findOlderMovies(sortedList, 10))
+    if(movie_list!= null){
+        const sortedList = sortMovies(movie_list)
+        findPrimaryMovie(sortedList)
+        addPrimaryMovieTile(primaryMovie)
+        addCandidateMovies(findOlderMovies(sortedList, 10))
+    } else {
+        displayNoResults()
+    }
 }
 
 const resetPage = () => {
     const movie_divs = document.getElementsByClassName('movie')
     while(movie_divs.length > 0){
         movie_divs[0].remove()
+    }
+    const primary_container = document.querySelector('.primary-movie-container')
+    if(primary_container != null){
+        primary_container.remove()
     }
     return true
 }
