@@ -110,8 +110,8 @@ a {
 .movie-year {
     grid-column-start: 1;
     grid-column-end: 2;
-    grid-row-start: 3;
-    grid-row-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
     font-size: 1.2em;
     font-weight: bold;
 }
@@ -153,8 +153,8 @@ a {
 .candidate-movie-title {
     grid-column-start: 1;
     grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
     font-weight: bold;
 }
 
@@ -189,16 +189,16 @@ a {
 .primary-movie-title {
     grid-column-start: 1;
     grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
     font-size: 1em;
 }
 
 .primary-image {
     grid-column-start: 1;
     grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
     justify-self: center;
     border: white solid 3px;
     border-radius: 5px;
