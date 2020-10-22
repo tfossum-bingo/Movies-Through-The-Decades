@@ -182,6 +182,7 @@ class PrimaryMovie extends Movie {
             target_div.appendChild(this.createPanelHero(document, response.data))
             target_div.appendChild(this.createPanelActors(document, response.data))
             target_div.appendChild(this.createPanelPlot(document, response.data))
+            target_div.appendChild(this.createPanelDetailsList(document, response.data))
             // new_p.innerText = `${response.data['Plot']} Rated: ${response.data['Rated']} Runtime: ${response.data['Runtime']}`
             // this.assignDetailsClassList(new_p)
             // target_div.appendChild(new_p)
@@ -192,16 +193,31 @@ class PrimaryMovie extends Movie {
     }
 
     createPanelActors(document, data){
-        const hero_div = document.createElement('div')
-        hero_div.id = 'sidepanel-actors'
-        const actors_text = document.createElement('p')
-        actors_text.innerText = data['Actors']
-        hero_div.appendChild(actors_text)
-        return hero_div
+        const heroDiv = document.createElement('div')
+        heroDiv.id = 'sidepanel-actors'
+        const actorsText = document.createElement('p')
+        actorsText.innerText = data['Actors']
+        heroDiv.appendChild(actorsText)
+        return heroDiv
     }
 
     createPanelDetailsList(document, data) {
-
+        const detailsDiv = document.createElement('div')
+        detailsDiv.display = 'flex'
+        detailsDiv.flexDirection = 'column'
+        detailsDiv.justifyContent = 'space-between'
+        detailsDiv.id = 'sidepanel-details-list'
+        const keys = this.detailKeys()
+        const newUL = document.createElement('ul')
+        newUL.classList.add = 'sidepanel-unordered-list'
+        for(let i = 0; i < keys.length; i++){
+            const item = document.createElement('li')
+            item.innerHTML = `${keys[i]}: ${data[keys[i]]}`
+            item.classList.add('sidepanel-detail-item')
+            newUL.appendChild(item)
+        }
+        detailsDiv.appendChild(newUL)
+        return detailsDiv
     }
         
     createPanelHero(document, data) {
@@ -224,10 +240,20 @@ class PrimaryMovie extends Movie {
     }
 
     resetSidePanel(document) {
-        document.getElementById('sidepanel-hero').remove()
-        document.getElementById('sidepanel-details-list').remove()
-        document.getElementById('sidepanel-actors').remove()
-        document.getElementById('sidepanel-plot').remove()
+        this.removeElement(document.getElementById('sidepanel-hero'))
+        this.removeElement(document.getElementById('sidepanel-details-list'))
+        this.removeElement(document.getElementById('sidepanel-actors'))
+        this.removeElement(document.getElementById('sidepanel-plot'))
+    }
+
+    removeElement(element) {
+        if(element != null){
+            element.remove()
+        }
+    }
+
+    detailKeys() {
+        return ['Released','Rated','Runtime', 'Director','Writer', 'Genre', 'Production']
     }
 
 

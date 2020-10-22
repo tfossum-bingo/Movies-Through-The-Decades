@@ -134,9 +134,13 @@ a {
     background-color: rgb(224, 127, 233); 
 }
 
+.sidepanel-detail-item {
+    text-align: left;
+}
+
 #sidepanel-actors {
     grid-area: 3/2/4/4;
-    color: white;
+    color: black;
     background-color: rgb(226, 233, 127); 
 }
 
