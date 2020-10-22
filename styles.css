@@ -98,15 +98,14 @@ ul {
 /* Found on w3c and modified for my situation */
 .sidepanel {
     width: 80%;
-    height: 80%; /* Specify a height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 20px;
+    height: 80%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 100px;
     right: 0;
-    /* border: white solid 3px; */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    transition: .8s; /* 0.5 second transition effect to slide in the sidepanel */
+    overflow-x: hidden;
+    transition: .8s;
     transition-timing-function: ease-in-out;
     display: grid;
     grid-template-columns: 40px 1fr 1fr;
@@ -134,7 +133,6 @@ ul {
 #sidepanel-hero {
     grid-area: 2/2/3/3;
     color: white;
-    background-color: rgb(45, 45, 45);
     /* background-color: rgb(47, 79, 79); */
 }
 
@@ -237,7 +235,11 @@ ul {
 }
 
 .more-link {
+    width: 100px;
+    padding-top: 4px;
+    border-radius: 5px;
     font-size: smaller;
+    justify-self: center;
 }
 
 .more-link:hover {

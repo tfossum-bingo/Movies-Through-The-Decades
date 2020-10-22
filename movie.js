@@ -121,9 +121,8 @@ class PrimaryMovie extends Movie {
 
     addDetailsLink(document, target_div) {
         
-        const detailsLink = document.createElement('span')
+        const detailsLink = document.createElement('div')
         detailsLink.classList.add('more-link')
-        // const linkText = document.createTextNode("<More>");
         detailsLink.innerText = '<more>'
         detailsLink.addEventListener('click', function(event){
             event.stopPropagation()
