@@ -93,21 +93,58 @@ a {
 
 /* Found on w3c */
 .sidepanel {
+    display: grid;
+    grid-template-columns: 40px 400px 300px;
+    grid-template-rows: 40px 500px 1fr 1fr;
     height: 80%; /* Specify a height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
     top: 20px;
     right: 0;
-    background-color: darkgray; /* Black*/
+    /* background-color: darkgray; Black */
+    border: white solid 3px;
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 30px; /* Place content 60px from the top */
+    /*padding-top: 30px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
-    display: grid;
-    grid-template-columns: 3;
-    grid-template-rows: 2;
 
   }
+
+#sidepanel-close {
+    grid-area: 1/1/1/1;
+    color: white;
+    background-color: rgb(243, 152, 34);
+}
+
+#sidepanel-fill-top {
+    grid-area: 1/2/2/4;
+    color: white;
+    background-color: rgb(243, 152, 34);
+}
+
+#sidepanel-hero {
+    grid-area: 2/2/3/3;
+    color: white;
+    background-color: rgb(47, 79, 79); 
+}
+
+#sidepanel-details-list {
+    grid-area: 2/3/3/4;
+    color: white;
+    background-color: rgb(224, 127, 233); 
+}
+
+#sidepanel-actors {
+    grid-area: 3/2/4/4;
+    color: white;
+    background-color: rgb(226, 233, 127); 
+}
+
+#sidepanel-plot {
+    grid-area: 4/2/5/4;
+    color: white;
+    background-color: rgb(127, 233, 154); 
+}
 
 .movie {
     color: black;
@@ -210,7 +247,7 @@ a {
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 10px;
-    background-color: thistle;
+    /* background-color: thistle; */
 }
 
 .primary-movie-title {

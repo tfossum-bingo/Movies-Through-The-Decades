@@ -146,6 +146,13 @@ const resetPage = () => {
     return true
 }
 
+const reset_sidepanel = (document) => {
+    document.getElementById('sidepanel-hero').remove()
+    document.getElementById('sidepanel-details-list').remove()
+    document.getElementById('sidepanel-actors').remove()
+    document.getElementById('sidepanel-plot').remove()
+}
+
 const removePriorCompare = () => {
     const existing_comparisons = document.querySelector('.primary-movie-container')
 
@@ -192,7 +199,7 @@ titleField.addEventListener('keyup', function(event){
     }
 })
 
-document.getElementById('panel-close').addEventListener('click', function(event){
+document.getElementById('sidepanel-close').addEventListener('click', function(event){
     document.querySelector('.sidepanel').style.width = 0;
 })
 

@@ -120,19 +120,19 @@ class PrimaryMovie extends Movie {
     }
 
     addDetailsLink(document, target_div) {
-        console.log('HIT addDetailsLink')
+        
         const detailsLink = document.createElement('span')
         detailsLink.classList.add('more-link')
         // const linkText = document.createTextNode("<More>");
         detailsLink.innerText = '<more>'
         detailsLink.addEventListener('click', function(event){
             event.stopPropagation()
-            document.querySelector('.sidepanel').style.width = "80%"
+            const panel_movie = new PrimaryMovie(event.target.parentNode.id)
+            panel_movie.createPanelDetails(document, event.target.parentNode.id)
+            document.querySelector('.sidepanel').style.width = "60%"
             console.log('More button clicked')
         })
-        // detailsLink.appendChild(linkText);
-        // detailsLink.title = "my title text";
-        // detailsLink.href = `./detail.html?imdbID=${this.imdbID}`;
+        
         target_div.appendChild(detailsLink)
     }
 
@@ -171,6 +171,64 @@ class PrimaryMovie extends Movie {
 
     }
 
+    createPanelDetails= async (document, imdbID) => {
+        this.resetSidePanel(document)
+        const target_div = document.querySelector('.sidepanel')
+        try{
+            console.log('Passed imdbID: ', imdbID)
+            const response = await axios.get(`${DETAIL_SEARCH_URL}${imdbID}`)
+            // this.verbose_description = response.data
+            console.log('details', response.data)
+            target_div.appendChild(this.createPanelHero(document, response.data))
+            target_div.appendChild(this.createPanelActors(document, response.data))
+            target_div.appendChild(this.createPanelPlot(document, response.data))
+            // new_p.innerText = `${response.data['Plot']} Rated: ${response.data['Rated']} Runtime: ${response.data['Runtime']}`
+            // this.assignDetailsClassList(new_p)
+            // target_div.appendChild(new_p)
+            // this.addDetailsLink(document, target_div)
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    createPanelActors(document, data){
+        const hero_div = document.createElement('div')
+        hero_div.id = 'sidepanel-actors'
+        const actors_text = document.createElement('p')
+        actors_text.innerText = data['Actors']
+        hero_div.appendChild(actors_text)
+        return hero_div
+    }
+
+    createPanelDetailsList(document, data) {
+
+    }
+        
+    createPanelHero(document, data) {
+        const hero_div = document.createElement('div')
+        hero_div.id = 'sidepanel-hero'
+        const new_img = document.createElement('img')
+        new_img.src = data['Poster']
+        new_img.img_alt = `Movie Poster ${data['Title']}`
+        hero_div.appendChild(new_img)
+        return hero_div
+    }
+
+    createPanelPlot(document, data) {
+        const plot_div = document.createElement('div')
+        plot_div.id = 'sidepanel-plot'
+        const article = document.createElement('article')
+        plot_div.appendChild(article)
+        article.innerText = data['Plot']
+        return plot_div
+    }
+
+    resetSidePanel(document) {
+        document.getElementById('sidepanel-hero').remove()
+        document.getElementById('sidepanel-details-list').remove()
+        document.getElementById('sidepanel-actors').remove()
+        document.getElementById('sidepanel-plot').remove()
+    }
 
 
 }
