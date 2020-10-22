@@ -72,6 +72,16 @@ const addPrimaryMovieTile = (movie) => {
     return true
 }
 
+const displayNoResults = () => {
+    const warningContainer = newDiv()
+    warningContainer.classList.add('warning-container')
+    const warningText = document.createElement('p')
+    warningText.classList.add('warning-text')
+    warningText.innerText = 'No Results'
+    warningContainer.appendChild(warningText)
+    primaryMovieContainer().appendChild(warningContainer)
+}
+
 const fetchMovieDetails = async (movie) => {
     try{
         const response = await axios.get(`${DETAIL_SEARCH_URL}${movie.imdbID}`)
