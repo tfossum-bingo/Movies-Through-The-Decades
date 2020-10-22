@@ -31,12 +31,8 @@ class Movie {
         p.classList = 'movie-year'
     }
 
-    detailsTag(document) {
-        const new_p = document.createElement('p')
-        console.log('details', this.verbose_description)
-        new_p.innerText = `${this.movieDetails['Plot']} Rated: ${this.movieDetails['Rated']} Runtime: ${this.movieDetails['Runtime']}`
-        this.assignDetailsClassList(new_p)
-        return new_p
+    detailsTag(document, target_div) {
+  
     }
  
     get imdbID(){
@@ -70,8 +66,9 @@ class Movie {
         new_div.appendChild(this.posterImageTag(document))
         new_div.appendChild(this.titleTag(document))
         new_div.appendChild(this.yearTag(document))
-        if(this.movieDetails != ''){
-            new_div.appendChild(this.detailsTag(document))
+        console.log('Calling for details', this.movieDetails)
+        if(this.movieDetails === ''){
+            this.detailsTag(document, new_div)
         }
         return new_div
     }
@@ -139,5 +136,23 @@ class PrimaryMovie extends Movie {
         p.classList.add('primary-movie-title')
         super.assignTitleClassList(p)
     }
+
+    detailsTag = async (document, target_div) => {
+        console.log('Details called')
+        try{
+            const response = await axios.get(`${DETAIL_SEARCH_URL}${this.imdbID}`)
+            this.verbose_description = response.data
+            console.log('details', this.verbose_description)
+            const new_p = document.createElement('p')
+            new_p.innerText = `${this.movieDetails['Plot']} Rated: ${this.movieDetails['Rated']} Runtime: ${this.movieDetails['Runtime']}`
+            this.assignDetailsClassList(new_p)
+            target_div.appendChild(new_p)
+        }catch(error){
+            console.log(error)
+        }
+
+    }
+
+
 
 }

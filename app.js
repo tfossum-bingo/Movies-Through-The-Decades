@@ -60,14 +60,8 @@ const addPrimaryMovieTile = (movie) => {
     }
     const primary_movie_container = primaryMovieContainer()
     const primary_movie = new PrimaryMovie(movie)
-    fetchMovieDetails(primary_movie)
-    //Really don't like this and would rather wait specifically for the reply.
-    setTimeout(function(){
-        console.log('Waited for details')
-        console.log('Done waiting')
-        const primary_movie_div = primary_movie.tile(document)
-        primary_movie_container.appendChild(primary_movie_div)
-    }, 250)
+    const primary_movie_div = primary_movie.tile(document)
+    primary_movie_container.appendChild(primary_movie_div)
     
     return true
 }
