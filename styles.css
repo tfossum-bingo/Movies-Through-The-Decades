@@ -5,7 +5,6 @@
 body {
     color: blue;
     font-family: 'Krona One', sans-serif;
-    /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 h1 {
@@ -25,9 +24,28 @@ ul {
     background-color: rgb(68, 67, 67);
 }
 
+.welcome-upper-container {
+    display: flex;
+    justify-content: center;
+}
+
 .welcome-link-container {
+    width: 400px;
     margin: 3em;
     font-size: 1.3em;
+    align-content: center;
+    padding: 5px;
+    border-radius: 7px;
+    background-color: lightgrey;
+}
+
+a.welcome-link-container {
+    color: rgb(40,40,40);
+}
+
+.welcome-link-container:hover {
+    color: rgb(40,40,40);
+    background-color: lightgrey;
 }
 
 .welcome-message-container {
@@ -61,7 +79,6 @@ ul {
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
-    /* text-align: right; */
     text-align: center;
     padding: 13px 0;
 }
@@ -126,7 +143,6 @@ ul {
 #sidepanel-fill-top {
     grid-area: 1/2/2/4;
     color: white;
-    
     /* background-color: rgb(243, 152, 34); */
 }
 
@@ -250,7 +266,6 @@ ul {
 .small-title {
     margin: 1px;
     font-size: smaller;
-    /* color: red; */
 }
 
 .primary-movie {
@@ -272,7 +287,6 @@ ul {
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 10px;
-    /* background-color: thistle; */
 }
 
 .primary-movie-title {
@@ -329,7 +343,6 @@ textarea:focus, input:focus{
     background-color: palegoldenrod;
     border-radius: 5px;
     border: darkred solid 2px;
-    /* margin-top: .8em; */
     width: 50%;
 }
 

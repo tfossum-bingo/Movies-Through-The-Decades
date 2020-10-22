@@ -12,16 +12,12 @@ const API_KEY = '3279c95f'
 const BASE_URL = `${DOMAIN}?apikey=${API_KEY}&s=`
 const DETAIL_SEARCH_URL = `http://www.omdbapi.com/?apikey=${API_KEY}&i=`
 
-console.log('BASE_URL: ', BASE_URL)
 
 const addCompareChildClickListeners = (candidate_movie_div) => {
-    // console.log('candidate_movie_div: ', candidate_movie_div)
-
     for(let i = 0; i < candidate_movie_div.childNodes.length; i++){
         candidate_movie_div.childNodes[i].addEventListener('click', function(event){
             event.stopPropagation()
             const parent_imdbID = candidate_movie_div.childNodes[i].parentNode.id
-            console.log(`Child-${i}:`, parent_imdbID)
             addCompareMovie(parent_imdbID)
         })
     }
@@ -81,7 +77,6 @@ const fetchMovieDetails = async (movie) => {
         const response = await axios.get(`${DETAIL_SEARCH_URL}${movie.imdbID}`)
         console.log(response.data)
         movie.verbose_description = response.data
-        console.log('verbose: ', movie.verbose_description)
     }catch(error){
         console.log(error)
     }
@@ -155,7 +150,6 @@ const reset_sidepanel = (document) => {
 
 const removePriorCompare = () => {
     const existing_comparisons = document.querySelector('.primary-movie-container')
-
     if(existing_comparisons != null && existing_comparisons.childElementCount > 1){
         existing_comparisons.removeChild(existing_comparisons.lastChild)
     }
@@ -165,7 +159,6 @@ const removePriorCompare = () => {
 const searchMovies = async (titleSearch) => {
     try{
         const response = await axios.get(`${BASE_URL}${titleSearch}`)
-        // console.log(response.data.Search)
         processList(response.data.Search)
         return response.data.Search
     }catch(error){
@@ -177,7 +170,6 @@ const sortMovies = (movie_list) => {
     movie_list.sort(function(a,b){
         return b['Year'] - a['Year']
     })
-    // console.log(movie_list)
     return movie_list
 }
 
