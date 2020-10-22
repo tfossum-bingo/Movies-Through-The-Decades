@@ -66,7 +66,6 @@ class Movie {
         new_div.appendChild(this.posterImageTag(document))
         new_div.appendChild(this.titleTag(document))
         new_div.appendChild(this.yearTag(document))
-        console.log('Calling for details', this.movieDetails)
         if(this.movieDetails === ''){
             this.detailsTag(document, new_div)
         }
@@ -129,7 +128,6 @@ class PrimaryMovie extends Movie {
             const panel_movie = new PrimaryMovie(event.target.parentNode.id)
             panel_movie.createPanelDetails(document, event.target.parentNode.id)
             document.querySelector('.sidepanel').style.width = "60%"
-            console.log('More button clicked')
         })
         
         target_div.appendChild(detailsLink)
@@ -154,7 +152,6 @@ class PrimaryMovie extends Movie {
     }
 
     detailsTag = async (document, target_div) => {
-        console.log('Details called')
         try{
             const response = await axios.get(`${DETAIL_SEARCH_URL}${this.imdbID}`)
             this.verbose_description = response.data
@@ -170,11 +167,10 @@ class PrimaryMovie extends Movie {
 
     }
 
-    createPanelDetails= async (document, imdbID) => {
+    createPanelDetails = async (document, imdbID) => {
         this.resetSidePanel(document)
         const target_div = document.querySelector('.sidepanel')
         try{
-            console.log('Passed imdbID: ', imdbID)
             const response = await axios.get(`${DETAIL_SEARCH_URL}${imdbID}`)
             console.log('details', response.data)
             target_div.appendChild(this.createPanelHero(document, response.data))

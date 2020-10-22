@@ -306,6 +306,7 @@ a.welcome-link-container {
     border: white solid 3px;
     border-radius: 5px;
     width: 90%;
+    max-height: 375px;
 }
 
 .primary-description {
