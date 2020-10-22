@@ -17,6 +17,10 @@ a {
     color: white;
 }
 
+ul {
+    list-style: none;
+}
+
 .welcome-page {
     background-color: rgb(68, 67, 67);
 }
@@ -83,55 +87,64 @@ a {
 }
 
 .search-instructions-container {
-    grid-area: 1 1;
+    grid-area: 2/1/3/2;
 }
 
 .search-entry {
-    grid-area: 2 1;
+    grid-area: 1/1/2/2;
     text-align: center;
 }
 
-/* Found on w3c */
+/* Found on w3c and modified for my situation */
 .sidepanel {
-    display: grid;
-    grid-template-columns: 40px 400px 300px;
-    grid-template-rows: 40px 500px 1fr 1fr;
+    width: 80%;
     height: 80%; /* Specify a height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
     top: 20px;
     right: 0;
-    /* background-color: darkgray; Black */
-    border: white solid 3px;
+    /* border: white solid 3px; */
     overflow-x: hidden; /* Disable horizontal scroll */
-    /*padding-top: 30px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
-
+    transition: .8s; /* 0.5 second transition effect to slide in the sidepanel */
+    transition-timing-function: ease-in-out;
+    display: grid;
+    grid-template-columns: 40px 1fr 1fr;
+    grid-template-rows: 40px 70% 1fr 1fr;
   }
 
 #sidepanel-close {
     grid-area: 1/1/1/1;
     color: white;
-    background-color: rgb(243, 152, 34);
+    padding-top: 10px;;
+    /* background-color: rgb(243, 152, 34); */
+}
+
+#sidepanel-close:hover {
+    background-color: rgb(139, 0, 0, .7);
 }
 
 #sidepanel-fill-top {
     grid-area: 1/2/2/4;
     color: white;
-    background-color: rgb(243, 152, 34);
+    
+    /* background-color: rgb(243, 152, 34); */
 }
 
 #sidepanel-hero {
     grid-area: 2/2/3/3;
     color: white;
-    background-color: rgb(47, 79, 79); 
+    background-color: rgb(45, 45, 45);
+    /* background-color: rgb(47, 79, 79); */
 }
 
 #sidepanel-details-list {
     grid-area: 2/3/3/4;
+    font-size: smaller;
     color: white;
-    background-color: rgb(224, 127, 233); 
+    /* background-color: rgb(45, 45, 45); */
+    padding-right: 5px;
+    /* background-color: rgb(224, 127, 233);  */
 }
 
 .sidepanel-detail-item {
@@ -140,14 +153,20 @@ a {
 
 #sidepanel-actors {
     grid-area: 3/2/4/4;
-    color: black;
-    background-color: rgb(226, 233, 127); 
+    color: white;
+    /* background-color: rgb(226, 233, 127);*/
+    padding: 5px;
 }
 
 #sidepanel-plot {
     grid-area: 4/2/5/4;
     color: white;
-    background-color: rgb(127, 233, 154); 
+    padding: 5px;
+    /* background-color: rgb(127, 233, 154);  */
+}
+
+.sp-background {
+    background-color: rgb(45, 45, 45, .8);
 }
 
 .movie {

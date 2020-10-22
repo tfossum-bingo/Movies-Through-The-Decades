@@ -177,23 +177,18 @@ class PrimaryMovie extends Movie {
         try{
             console.log('Passed imdbID: ', imdbID)
             const response = await axios.get(`${DETAIL_SEARCH_URL}${imdbID}`)
-            // this.verbose_description = response.data
             console.log('details', response.data)
             target_div.appendChild(this.createPanelHero(document, response.data))
             target_div.appendChild(this.createPanelActors(document, response.data))
             target_div.appendChild(this.createPanelPlot(document, response.data))
             target_div.appendChild(this.createPanelDetailsList(document, response.data))
-            // new_p.innerText = `${response.data['Plot']} Rated: ${response.data['Rated']} Runtime: ${response.data['Runtime']}`
-            // this.assignDetailsClassList(new_p)
-            // target_div.appendChild(new_p)
-            // this.addDetailsLink(document, target_div)
         }catch(error){
             console.log(error)
         }
     }
 
     createPanelActors(document, data){
-        const heroDiv = document.createElement('div')
+        const heroDiv = this.createPanelDiv(document)
         heroDiv.id = 'sidepanel-actors'
         const actorsText = document.createElement('p')
         actorsText.innerText = data['Actors']
@@ -202,7 +197,7 @@ class PrimaryMovie extends Movie {
     }
 
     createPanelDetailsList(document, data) {
-        const detailsDiv = document.createElement('div')
+        const detailsDiv = this.createPanelDiv(document)
         detailsDiv.display = 'flex'
         detailsDiv.flexDirection = 'column'
         detailsDiv.justifyContent = 'space-between'
@@ -221,7 +216,7 @@ class PrimaryMovie extends Movie {
     }
         
     createPanelHero(document, data) {
-        const hero_div = document.createElement('div')
+        const hero_div = this.createPanelDiv(document)
         hero_div.id = 'sidepanel-hero'
         const new_img = document.createElement('img')
         new_img.src = data['Poster']
@@ -231,7 +226,7 @@ class PrimaryMovie extends Movie {
     }
 
     createPanelPlot(document, data) {
-        const plot_div = document.createElement('div')
+        const plot_div = this.createPanelDiv(document)
         plot_div.id = 'sidepanel-plot'
         const article = document.createElement('article')
         plot_div.appendChild(article)
@@ -250,6 +245,12 @@ class PrimaryMovie extends Movie {
         if(element != null){
             element.remove()
         }
+    }
+
+    createPanelDiv(document){
+        const theDiv = document.createElement('div')
+        theDiv.classList.add('sp-background')
+        return theDiv
     }
 
     detailKeys() {
