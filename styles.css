@@ -91,6 +91,24 @@ a {
     text-align: center;
 }
 
+/* Found on w3c */
+.sidepanel {
+    height: 80%; /* Specify a height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 20px;
+    right: 0;
+    background-color: darkgray; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 30px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+    display: grid;
+    grid-template-columns: 3;
+    grid-template-rows: 2;
+
+  }
+
 .movie {
     color: black;
     padding: .5em;
@@ -156,6 +174,15 @@ a {
     grid-row-start: 3;
     grid-row-end: 4;
     font-weight: bold;
+}
+
+.more-link {
+    font-size: smaller;
+}
+
+.more-link:hover {
+    color: darkgrey;
+    background-color: white;
 }
 
 .small-title {

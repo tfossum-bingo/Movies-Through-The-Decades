@@ -119,6 +119,23 @@ class PrimaryMovie extends Movie {
         super(movie)
     }
 
+    addDetailsLink(document, target_div) {
+        console.log('HIT addDetailsLink')
+        const detailsLink = document.createElement('span')
+        detailsLink.classList.add('more-link')
+        // const linkText = document.createTextNode("<More>");
+        detailsLink.innerText = '<more>'
+        detailsLink.addEventListener('click', function(event){
+            event.stopPropagation()
+            document.querySelector('.sidepanel').style.width = "80%"
+            console.log('More button clicked')
+        })
+        // detailsLink.appendChild(linkText);
+        // detailsLink.title = "my title text";
+        // detailsLink.href = `./detail.html?imdbID=${this.imdbID}`;
+        target_div.appendChild(detailsLink)
+    }
+
     assignDetailsClassList(new_p) {
         new_p.classList = 'primary-description'
     }
@@ -147,6 +164,7 @@ class PrimaryMovie extends Movie {
             new_p.innerText = `${response.data['Plot']} Rated: ${response.data['Rated']} Runtime: ${response.data['Runtime']}`
             this.assignDetailsClassList(new_p)
             target_div.appendChild(new_p)
+            this.addDetailsLink(document, target_div)
         }catch(error){
             console.log(error)
         }

@@ -192,4 +192,7 @@ titleField.addEventListener('keyup', function(event){
     }
 })
 
+document.getElementById('panel-close').addEventListener('click', function(event){
+    document.querySelector('.sidepanel').style.width = 0;
+})
 
