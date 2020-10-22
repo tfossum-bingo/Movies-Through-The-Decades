@@ -249,7 +249,7 @@ class PrimaryMovie extends Movie {
     }
 
     detailKeys() {
-        return ['Released','Rated','Runtime', 'Director','Writer', 'Genre', 'Production']
+        return ['Released','Rated','Runtime', 'Metascore', 'Director','Writer', 'Production', 'Genre', 'Production']
     }
 
 

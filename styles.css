@@ -156,7 +156,6 @@ a.welcome-link-container {
     grid-area: 2/3/3/4;
     font-size: smaller;
     color: white;
-    /* background-color: rgb(45, 45, 45); */
     padding-right: 5px;
     /* background-color: rgb(224, 127, 233);  */
 }
@@ -169,18 +168,19 @@ a.welcome-link-container {
     grid-area: 3/2/4/4;
     color: white;
     /* background-color: rgb(226, 233, 127);*/
-    padding: 5px;
+    padding: 10px;
 }
 
 #sidepanel-plot {
     grid-area: 4/2/5/4;
     color: white;
     padding: 5px;
+    padding: 10px 10px 20px 10px;
     /* background-color: rgb(127, 233, 154);  */
 }
 
 .sp-background {
-    background-color: rgb(45, 45, 45, .8);
+    background-color: rgb(45, 45, 45, .9);
 }
 
 .movie {
@@ -252,6 +252,7 @@ a.welcome-link-container {
 
 .more-link {
     width: 100px;
+    height: 23px;
     padding-top: 4px;
     border-radius: 5px;
     font-size: smaller;
