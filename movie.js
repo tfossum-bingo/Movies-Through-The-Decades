@@ -142,9 +142,9 @@ class PrimaryMovie extends Movie {
         try{
             const response = await axios.get(`${DETAIL_SEARCH_URL}${this.imdbID}`)
             this.verbose_description = response.data
-            console.log('details', this.verbose_description)
+            console.log('details', response.data)
             const new_p = document.createElement('p')
-            new_p.innerText = `${this.movieDetails['Plot']} Rated: ${this.movieDetails['Rated']} Runtime: ${this.movieDetails['Runtime']}`
+            new_p.innerText = `${response.data['Plot']} Rated: ${response.data['Rated']} Runtime: ${response.data['Runtime']}`
             this.assignDetailsClassList(new_p)
             target_div.appendChild(new_p)
         }catch(error){
